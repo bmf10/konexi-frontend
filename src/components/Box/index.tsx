@@ -7,9 +7,16 @@ interface Props {
   readonly header?: ReactNode; // Custom header
   readonly className?: string;
   readonly parentClassName?: string;
+  readonly onDelete?: () => void;
 }
 
-const Box: FC<Props> = ({ children, header, className, parentClassName }) => {
+const Box: FC<Props> = ({
+  children,
+  header,
+  className,
+  parentClassName,
+  onDelete,
+}) => {
   return (
     <div
       className={clsx(
@@ -34,7 +41,10 @@ const Box: FC<Props> = ({ children, header, className, parentClassName }) => {
               Export to Google Sheets
             </h1>
           </div>
-          <button className="bg-gray-100 p-2 rounded-md hover:brightness-95">
+          <button
+            className="bg-gray-100 p-2 rounded-md hover:brightness-95"
+            onClick={onDelete}
+          >
             <Image
               src="/icon-delete.svg"
               alt="delete icon"
